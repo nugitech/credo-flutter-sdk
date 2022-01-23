@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_credo/core/utils/util.dart';
 import 'package:flutter_credo/flutter_credo.dart';
 import 'package:flutter_credo/src/domain/repositories/credo_sdk_repository.dart';
-import 'package:flutter_credo/views/widgets/widgets.dart';
 
 class CredoPlugin extends Equatable {
   final String publicKey;
@@ -225,7 +224,7 @@ class CredoPlugin extends Equatable {
     });
   }
 
-  /// Initial payment and pay using Credo web pyment UI
+  /// Initial payment and pay using Credo web payment UI
   ///
   ///
   /// [currency] - the orderCurrency example NGN.
@@ -246,7 +245,7 @@ class CredoPlugin extends Equatable {
   ///
   /// throw  [CredoException] if any error is encountered
 
-  Future<bool> payWithUI({
+  Future<bool> payWithWebUI({
     required BuildContext context,
     required double amount,
     required String currency,

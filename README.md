@@ -135,7 +135,40 @@ After payment initialization, payment is made using the `pay` method
 	}
 ```
 
-After payment, you can call the `verifyTransaction` which returns `VerifyTransactionResponse` to verify the payment and confirm all is good. 
+### 6. Make payment with Credo Web UI
+Payment transaction can be made with the `payWithWebUI` method: 
+## Parameters
+- `amount` The amount to be transacted.
+- `currency` The currency to be transacted in. 
+- `redirectUrl` The url to redirect to after transaction.
+- `transRef` [optional] The transaction reference for the payment
+- `paymentOptions` option can be "CARD" or "USSD" or "BANK"
+- `customerName` Name of the customer
+- `customerEmail` Email address of the customer
+- `customerPhone` Phone number of the customer
+If the method call is successful, a `Webview to complete the payment` is returned from the `Future` else it throws a `CredoException` with an error message.
+	
+```dart
+	.
+	.
+	.
+	try{
+		 await credoPlugin.payWithWebUI(
+		amount:  100.0,
+		currency:  'NGN',
+		customerEmail:  'info@charlesarchibong.com',
+		customerName:  'Charles Archibong',
+		customerPhoneNo:  '000000000000',
+		);
+	}catch(e){
+		if(e is CredoException){
+			print(e.message);
+		}
+	}
+```
+
+
+After payment, you can call the `verifyTransaction` which returns `VerifyTransactionResponse` to verify the payment and confirm all is good.
 
 you can check out the example on [this link](https://github.com/charlesarchibong/flutter_credo/tree/dev/example)
 	
@@ -143,4 +176,4 @@ you can check out the example on [this link](https://github.com/charlesarchibong
 
 # Author
 - [Charles Archibong](https://www.linkedin.com/in/charles-archibong-9b6a23164/)
-- [Jerry Agbama](https://www.linkedin.com/in/charles-archibong-9b6a23164/)
+- [Jerry Agbama](https://www.linkedin.com/in/jeremiah-agbama-168653161/)

@@ -70,8 +70,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> makePayment() async {
     try {
-      print('Initial payment with credo');
-      var res = await credoPlugin!.payWithUI(
+      print('Make payment with credo');
+      var res = await credoPlugin!.payWithWebUI(
         context: context,
         amount: 100.0,
         currency: 'NGN',
