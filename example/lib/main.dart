@@ -93,8 +93,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     credoPlugin = CredoPlugin(
-      publicKey: 'pk_demo-cKwtbsYaPNjgZZIFfznnZJGP49plbw.ujlZ0XcwAD-d',
-      secretKey: 'sk_demo-dQJJE9tFlunJv9jjZmJ49nyhqXKrbA.CchUPg1aqj-d',
+      publicKey: 'pk_demo-Ghz9Wo4cGeebxzDwfNZdooKLFtX7op.cXgwh6MyBs-d',
+      secretKey: 'sk_demo-jgksCSOofJjmSKRdR6d8pnFR37a0ix.0qeV4RGEpU-d',
     );
     makePayment();
     super.initState();
