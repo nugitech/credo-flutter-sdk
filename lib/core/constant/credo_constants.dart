@@ -5,5 +5,5 @@ mixin CredoConstants {
     HttpHeaders.contentTypeHeader: 'application/json',
     HttpHeaders.acceptHeader: 'application/json',
   };
-  final String baseUrl = 'https://credo-payments.nugitech.com/v1/';
+  final String baseUrl = 'https://api.credocentral.com/credo-payment/v1/';
 }

@@ -68,13 +68,35 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
+  Future<void> makePayment() async {
+    try {
+      print('Initial payment with credo');
+      var res = await credoPlugin!.payWithUI(
+        context: context,
+        amount: 100.0,
+        currency: 'NGN',
+        customerEmail: 'jerryakem99@gmail.com',
+        customerName: 'Jerry Akem',
+        customerPhoneNo: '08132368804',
+      );
+      print(res);
+    } catch (e) {
+      print(e);
+      if (e is CredoException) {
+        print(e.message);
+      } else {
+        print(e);
+      }
+    }
+  }
+
   @override
   void initState() {
     credoPlugin = CredoPlugin(
-      publicKey: 'pk_demo-cKwtbsYaPNjgZZIFfznnZJGP49plbw.ujlZ0XcwAD-d',
-      secretKey: 'sk_demo-dQJJE9tFlunJv9jjZmJ49nyhqXKrbA.CchUPg1aqj-d',
+      publicKey: 'pk_demo-Ghz9Wo4cGeebxzDwfNZdooKLFtX7op.cXgwh6MyBs-d',
+      secretKey: 'sk_demo-jgksCSOofJjmSKRdR6d8pnFR37a0ix.0qeV4RGEpU-d',
     );
-    initPayment();
+    makePayment();
     super.initState();
   }
 
