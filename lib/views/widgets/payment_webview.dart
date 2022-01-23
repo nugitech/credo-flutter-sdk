@@ -1,5 +1,3 @@
-// ignore_for_file: deprecated_member_use
-
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -31,21 +29,42 @@ class _PaymentWebviewState extends State<PaymentWebview> {
         child: Container(
           width: context.screenWidth() - 40,
           height: context.screenHeight(0.75),
-          child: WebView(
-            initialUrl: widget.paymentLink,
-            javascriptMode: JavascriptMode.unrestricted,
-            backgroundColor: Colors.transparent,
-            navigationDelegate: (NavigationRequest request) {
-              print(request.url);
-              if (request.url.startsWith('https://www.youtube.com/')) {
-                print('blocking navigation to $request}');
-                Navigator.pop(context, true);
-                // return NavigationDecision.prevent;
-              }
-              print('allowing navigation to $request');
-              return NavigationDecision.navigate;
-            },
-            gestureNavigationEnabled: true,
+          child: Column(
+            children: [
+              Expanded(
+                child: WebView(
+                  initialUrl: widget.paymentLink,
+                  javascriptMode: JavascriptMode.unrestricted,
+                  backgroundColor: Colors.transparent,
+                  navigationDelegate: (NavigationRequest request) {
+                    return NavigationDecision.navigate;
+                  },
+                  gestureNavigationEnabled: true,
+                ),
+              ),
+              SizedBox(height: 15),
+              GestureDetector(
+                onTap: () => Navigator.pop(context),
+                child: Container(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 5,
+                    horizontal: 10,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Color(0XFF0644cc),
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: Text(
+                    'Close',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 15),
+            ],
           ),
         ),
       ),

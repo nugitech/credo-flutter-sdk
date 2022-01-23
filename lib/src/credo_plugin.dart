@@ -270,17 +270,17 @@ class CredoPlugin extends Equatable {
       paymentOptions: paymentOptions,
       redirectUrl: redirectUrl,
     );
-    return verified.fold((CredoException credoException) {
-      throw credoException;
-    }, (InitPaymentResponse initPaymentResponseModel) async {
-      var res = await showDialog(
-        context: context,
-        barrierDismissible: false,
-        builder: (context) => PaymentWebview(
-          paymentLink: initPaymentResponseModel.paymentLink!,
-        ),
-      );
-      return res;
-    });
+    return verified.fold(
+      (CredoException credoException) {
+        throw credoException;
+      },
+      (InitPaymentResponse initPaymentResponseModel) async {
+        var res = await credoSdkRepository.showPaymentDialog(
+          context: context,
+          initPaymentResponse: initPaymentResponseModel,
+        );
+        return res;
+      },
+    );
   }
 }

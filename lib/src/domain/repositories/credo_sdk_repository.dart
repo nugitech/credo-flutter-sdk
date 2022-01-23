@@ -1,6 +1,6 @@
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_credo/core/constant/string_constants.dart';
 import 'package:flutter_credo/core/errors/credo_exceptions.dart';
 import 'package:flutter_credo/core/network/http_service_requester.dart';
@@ -10,6 +10,7 @@ import 'package:flutter_credo/src/data/models/init_payment_response_model.dart';
 import 'package:flutter_credo/src/data/models/third_party_payment_response_model.dart';
 import 'package:flutter_credo/src/data/models/verify_card_response_model.dart';
 import 'package:flutter_credo/src/data/models/verify_transaction_response.dart';
+import 'package:flutter_credo/views/widgets/widgets.dart';
 
 class CredoSdkRepository {
   late CredoRemoteDataSource credoRemoteDataSource;
@@ -49,6 +50,7 @@ class CredoSdkRepository {
       return Right(initPaymentResponseModel);
     } catch (e) {
       if (e is DioError) {
+        print(e.response);
         if (e.response!.statusCode! >= 500) {
           return Left(
             CredoException(
@@ -195,5 +197,19 @@ class CredoSdkRepository {
         ),
       );
     }
+  }
+
+  Future<bool> showPaymentDialog({
+    required BuildContext context,
+    required InitPaymentResponse initPaymentResponse,
+  }) async {
+    var res = await showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => PaymentWebview(
+        paymentLink: initPaymentResponse.paymentLink!,
+      ),
+    );
+    return res ?? false;
   }
 }
