@@ -176,4 +176,4 @@ you can check out the example on [this link](https://github.com/charlesarchibong
 
 # Author
 - [Charles Archibong](https://www.linkedin.com/in/charles-archibong-9b6a23164/)
-- [Jerry Agbama](https://www.linkedin.com/in/jeremiah-agbama-168653161/)
+- [Jeremiah Agbama](https://www.linkedin.com/in/jeremiah-agbama-168653161/)
