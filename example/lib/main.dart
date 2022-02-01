@@ -40,24 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
         customerName: 'Charles Archibong',
         customerPhoneNo: '09039311559',
       );
-
-      //Get payment slug from initial payment and use it to pay
       print(initial.toMap());
-      ThirdPartyPaymentResponse thirdPartyPaymentResponse =
-          await credoPlugin!.pay(
-        orderCurrency: 'NGN',
-        cardNumber: '',
-        expiryMonth: '07',
-        expiryYear: '23',
-        securityCode: '027',
-        transRef: 'teajenqfjehw',
-        paymentSlug: initial.paymentSlug,
-        orderAmount: 100.00,
-        customerEmail: 'charlesarchibong10@gmail.com',
-        customerName: 'Charles Archibong',
-        customerPhoneNo: '09039311559',
-      );
-      print(thirdPartyPaymentResponse.toMap());
     } catch (e) {
       print(e);
       if (e is CredoException) {
@@ -94,7 +77,6 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     credoPlugin = CredoPlugin(
       publicKey: 'pk_demo-Ghz9Wo4cGeebxzDwfNZdooKLFtX7op.cXgwh6MyBs-d',
-      secretKey: 'sk_demo-jgksCSOofJjmSKRdR6d8pnFR37a0ix.0qeV4RGEpU-d',
     );
     makePayment();
     super.initState();
