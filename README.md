@@ -42,7 +42,6 @@ To use this package, your android app must declare internet permission. Add the 
 
 CredoPlugin credoPlugin =  CredoPlugin(
     publicKey:  'public_key',
-    secretKey:  'secret_key',
 );
 
 ```
@@ -55,7 +54,6 @@ CredoPlugin credoPlugin;
 void  initState() {
 credoPlugin =  CredoPlugin(
 publicKey:  'pk_demo-cKwtbsYaPNjgZZIFfznnZJGP49plbw.ujlZ0XcwAD-d',
-secretKey:  'sk_demo-dQJJE9tFlunJv9jjZmJ49nyhqXKrbA.CchUPg1aqj-d',
 );
 
 initPayment();
@@ -95,47 +93,8 @@ If the method call is success a `InitPaymentResponse` is returned from the `Futu
 	}
 ```
 
-### 5. Make Payment
 
-After payment initialization, payment is made using the `pay` method
-	
-## Parameters
-- `amount` The amount to be transacted.   
-- `ordeCurrency` The currency to be transacted in. 
-- `cardNumber` The number of the verified debit card.
-- `expiryMonth` The expiry month of the verified card.
-- `expiryYear` The expiry Year of the verified card.
-- `securityCode` The cvv number of the verified card.
-- `transRef` The transaction reference used to during initiate payment stage.
-- `customerEmail` Email address of the customer.
-- `customerName` Name of the customer.
-- `customerPhone` Phone number of the customer.
-- `paymentSlug` this is part of the response of `initiatePayment` method in step 3 above.
-
-```dart
-	...
-	try{
-		ThirdPartyPaymentResponse thirdPartyPaymentResponse = await credoPlugin.pay(
-			orderCurrency:  'NGN',
-			cardNumber:  '',
-			expiryMonth:  '07',
-			expiryYear:  '23',
-			securityCode:  '027',
-			transRef:  initPaymentRes.transactionRef,
-			paymentSlug: initPaymentRes.paymentSlug,
-			orderAmount:  100.00,
-			customerEmail:  'charlesarchibong10@gmail.com',
-			customerName:  'Charles Archibong',
-			customerPhoneNo:  '09039311559',
-		);
-	} catch(e){
-		if(e is CredoException){
-			print(e.message);
-		}
-	}
-```
-
-### 6. Make payment with Credo Web UI
+### 4. Make payment with Credo Web UI
 Payment transaction can be made with the `payWithWebUI` method: 
 ## Parameters
 - `amount` The amount to be transacted.
