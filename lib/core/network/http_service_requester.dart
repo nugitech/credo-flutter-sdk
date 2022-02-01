@@ -10,12 +10,12 @@ class HttpServiceRequester with CredoConstants {
 
   Future<Response> post({
     required String endpoint,
-    String? secretKey,
+    String? publicKey,
     dynamic body,
     Map? queryParam,
   }) async {
     dio.options.headers = headers;
-    dio.options.headers["Authorization"] = "$secretKey";
+    dio.options.headers["Authorization"] = "$publicKey";
     Response response = await dio.post(
       baseUrl + endpoint,
       data: body,
@@ -26,11 +26,11 @@ class HttpServiceRequester with CredoConstants {
 
   Future<dynamic> getRequest({
     required String endpoint,
-    required String secretKey,
+    required String publicKey,
     required Map queryParam,
   }) async {
     dio.options.headers = headers;
-    dio.options.headers["Authorization"] = "$secretKey";
+    dio.options.headers["Authorization"] = "$publicKey";
 
     Response response = await dio.get(
       baseUrl + endpoint,

@@ -46,7 +46,7 @@ class CredoRemoteDataSourceImpl implements CredoRemoteDataSource {
     final Response response = await httpServiceRequester!.post(
       endpoint: 'payments/initiate',
       body: map,
-      secretKey: publicKey,
+      publicKey: publicKey,
     );
     Map<String, dynamic> mapResponse = response.data is Map<String, dynamic>
         ? response.data
